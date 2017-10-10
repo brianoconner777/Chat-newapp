@@ -73,3 +73,12 @@ io.sockets.on('connection', function (socket) { // First connection
 	});
 });
 
+function reloadUsers() { // Send the count of the users to all
+	io.sockets.emit('nbUsers', {"nb": users});
+}
+function pseudoSet(socket) { // Test if the user has a name
+	var test;
+	if (socket.nickname == null ) test = false;
+	else test = true;
+	return test;
+}
