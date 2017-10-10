@@ -4,7 +4,8 @@
   "description": "This application is made with Node.js, Express, Socket.io and Jade. It use Bootstrap from Twitter and the javascript librairie SlimScroll. Thanks to Node.js, the chat can handle a lot of simultaneous connections without lag.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"	
   },
   "repository": {
     "type": "git",
