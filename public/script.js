@@ -37,7 +37,46 @@ $(function() {
 	setHeight();
 	$('#messageInput').keypress(function (e) {
 	if (e.which == 13) {sentMessage();}});
+
+	$("#submitbutton").click(function(){
+    var valuetobesearched=$('#usersearch').val();
+    $.ajax({
+         url: "http://localhost:9200/message/post/_search?q=user:"+ valuetobesearched +"&pretty=true",
+         type: "GET",
+         beforeSend: function(xhr){xhr.setRequestHeader('Access-Control-Allow-Origin', '*');},
+         success: function(data) {
+          var length = data.hits.hits.length;
+          var dataalert = [];
+          for(var i=0;i<length;i++){
+          	dataalert.push(JSON.stringify(data.hits.hits[i]));
+          }
+          alert(dataalert);
+
+      }
+      });
+	});
+
+	$("#submitmessagebutton").click(function(){
+		var valuetobesearched=$('#messagesearch').val();
+		$.ajax({
+         url: "http://localhost:9200/message/post/_search?q=+body:*"+valuetobesearched+"*&pretty=true",
+         type: "GET",
+         beforeSend: function(xhr){xhr.setRequestHeader('Access-Control-Allow-Origin', '*');},
+         success: function(data) {
+          var length = data.hits.hits.length;
+          var dataalert = [];
+          for(var i=0;i<length;i++){
+          	dataalert.push(JSON.stringify(data.hits.hits[i]));
+          }
+          alert(dataalert);
+      	}
+      });
+
+	});
+	
+
 });
+
 
 //Socket.io
 var socket = io.connect();
@@ -69,6 +108,9 @@ function sentMessage() {
 		}
 	}
 }
+
+
+
 function addMessage(msg, pseudo, date, self) {
 	if(self) var classDiv = "row message self";
 	else var classDiv = "row message";

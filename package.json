@@ -4,8 +4,8 @@
   "description": "This application is made with Node.js, Express, Socket.io and Jade. It use Bootstrap from Twitter and the javascript librairie SlimScroll. Thanks to Node.js, the chat can handle a lot of simultaneous connections without lag.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"	
+    "test": "./node_modules/.bin/jasmine-node spec",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/brianoconner777/Chat-newapp#readme",
   "dependencies": {
+    "elasticsearch": "^13.3.1",
     "express": "^4.12.0",
     "jade": "^1.9.2",
+    "jasmine-node": "^1.14.5",
+    "request": "^2.83.0",
     "socket.io": "^1.3.4"
   }
 }
