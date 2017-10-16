@@ -21,5 +21,5 @@ To use it, you need Node.js and those 3 modules.
 
 	- You can change the app port from the server.js third line.
 
-
-
+## How to test :
+	- npm test
